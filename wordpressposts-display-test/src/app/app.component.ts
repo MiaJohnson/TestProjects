@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { AppService } from './app.service';
+
 
 @Component({
   selector: 'app-root',
@@ -14,8 +13,8 @@ export class AppComponent implements OnInit {
   restItems: any;
   restItemsUrl = 'https://public-api.wordpress.com/rest/v1.1/sites/vocon-it.com/posts';
 
-  constructor(private http: HttpClient, public sanitizer: DomSanitizer) {}
-  
+  constructor(private appService: AppService) {}
+    
 
   ngOnInit() {
     this.getRestItems();
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit {
 
   // Read all REST Items
   getRestItems(): void {
-    this.restItemsServiceGetRestItems()
+    this.appService.getAll()
       .subscribe(
         restItems => {
           this.restItems = restItems;
@@ -32,10 +31,4 @@ export class AppComponent implements OnInit {
       )
   }
 
-  // Rest Items Service: Read all REST Items
-  restItemsServiceGetRestItems() {
-    return this.http
-      .get<any[]>(this.restItemsUrl)
-      .pipe(map(data => data));
-  }
 }
