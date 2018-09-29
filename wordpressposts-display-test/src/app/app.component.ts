@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './app.service';
 import { SafePost } from './safe-post.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +11,19 @@ import { SafePost } from './safe-post.interface';
 })
 export class AppComponent implements OnInit {
   title = 'Wordpress Display Posts';
-  // restItems: any;
-  // restItemsUrl = 'https://public-api.wordpress.com/rest/v1.1/sites/vocon-it.com/posts';
-  posts: SafePost[];
+  posts$: Observable<SafePost[]>;
 
-  constructor(private appService: AppService, public sanitizer: DomSanitizer) {}
+  constructor(private appService: AppService) {}
     
 
   ngOnInit() {
-    this.getRestItems();
+    this.posts$ = this.getRestItems$();
   }
 
    // Read all REST Items
-   getRestItems(): void {
-    this.appService.getAll()
-    .subscribe(posts => { this.posts = posts; });
+   getRestItems$(): Observable<SafePost[]> {
+    return this.appService.getAll()
+    .pipe(posts => posts);
   }
 
 }
