@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Injectable()
-export class AppService implements OnInit { 
+export class AppService { 
 
   protected url : string = 'https://public-api.wordpress.com/rest/v1.1/sites/vocon-it.com/posts';
 
@@ -17,4 +17,9 @@ export class AppService implements OnInit {
       .pipe(map(data => data));
   }
 
+//   get() {
+//     return this.http
+//       .get<any[]>(this.url)
+//       .pipe(map(data => data));
+//   }
 }
