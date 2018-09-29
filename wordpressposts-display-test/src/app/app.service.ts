@@ -7,7 +7,7 @@ import { SafePost } from './safe-post.interface';
 @Injectable()
 export class AppService { 
 
-  protected url : string = 'https://public-api.wordpress.com/rest/v1.1/sites/vocon-it.com/posts';
+  protected url : string = 'https://public-api.wordpress.com/rest/v1.1/sites/avandarre.wordpress.com/posts';
 
   constructor(private http: HttpClient, public sanitizer: DomSanitizer) {}
 

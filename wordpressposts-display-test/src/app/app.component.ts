@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Wordpress Display Posts';
+  title = "Avandarre's Posts";
   posts$: Observable<SafePost[]>;
 
   constructor(private appService: AppService) {}

@@ -4,16 +4,22 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<h1>Blog Posts</h1>
 
 <div *ngIf="null === (posts$ | async)">Loading...</div>
+<div>
+<div style="float:left; width:35%;">
+  <h2>Blog Post List</h2>
+  <ul class="list">
+    <li *ngFor="let post of (posts$ | async)" [innerHTML]="post.title" (click)="selectedPost = post"> 
+    </li>
+  </ul>
+</div>
 
-<ul>
-  <li *ngFor="let post of (posts$ | async)" [innerHTML]="post.title" (click)="selectedPost = post"> 
-  </li>
-</ul>
-
-<div *ngIf="selectedPost">
-  <h1 [innerHTML]="selectedPost.title"></h1>
-  <div [innerHTML]="selectedPost.content"></div>
+<div style="float:right; width: 65%;">
+  <h2>Content</h2>
+  <div *ngIf="selectedPost">
+    <h1 [innerHTML]="selectedPost.title"></h1>
+    <div [innerHTML]="selectedPost.content"></div>
+  </div>
+</div>
 </div>
