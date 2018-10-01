@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = "Avandarre's Posts";
   posts$: Observable<SafePost[]>;
+  selectedPost: SafePost[] ;
+  
 
   constructor(private appService: AppService) {}
     

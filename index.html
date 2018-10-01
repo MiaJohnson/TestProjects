@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Johnson Projects</title>
+  <base href="/">
+  
+  <link href="styles.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  
+<style>
+  items li{
+    display: flex;
+    width:35%;
+  }
+
+  [is="x-item"] {
+    transition: opacity 400ms ease-in-out;
+    opacity: 0.3;
+    flex: .8;
+    /* text-align: center; */
+    font-size:.8em;
+    /* border-radius: 50%; */
+    width:35%;
+    padding-left:5%;
+  }
+
+  [is="x-item"]:hover {
+    opacity: 1.0;
+    background: #abc2b8;
+    color: white;
+	  width:35%;
+  }
+
+  ul > [is="x-item"] {
+    padding: 5px;
+    list-style: none;
+    margin: 0 3px;
+    width:35%;
+  }
+</style>
+
+</head>
+<body>
+    <div class="title">
+        <h1>Johnson's Playground</h1>
+      </div>
+      <h3>Collection of Angular apps, demo's, sandbox playground, etc.</h3>
+      <ul>
+        <li>
+            <a href="/HorseNameGenerator/index.html">Horse Name Generator</a>
+			<ul id="items">Generate random first and last names pulled from two arrays
+			<li is="x-item">Math.random</li>
+			<li is="x-item">Arrays / Classes</li>
+			</ul>
+        </li>
+		<li><a href="/AvandarreBlogPostsReader">Angular 6 REST API Example</a></li>
+      <ul id="items">Display a list of the 20 latests posts from my blog.
+        <li is="x-item">HttpClientModule</li>
+        <li is="x-item">Services</li>
+        <li is="x-item">Async Pipes</li>
+        <li is="x-item"><a href="https://github.com/MiaJohnson/TestProjects/tree/master/wordpressposts-display-test" target="_blank">Code on GitHub</a></li>
+      </ul>
+      <!-- <li> <a href="/">Horse Feed Amount Calculator</a> - Not ready yet</li> -->
+      </ul>
+        
+</body>
+</html>
+
+
